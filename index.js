@@ -125,6 +125,7 @@ function getReviewByRating(array, rate) {
 }
 
 console.log(getReviewByRating(reviews, 3));  
+
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
   
 Your function should accept: 
@@ -138,11 +139,20 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
-    /* code here */
-  }
-  
 
+function getLongReviews(array) {
+  const longReviews = []; 
+  for(i=0; i<array.length; i++){
+      const words = array[i].feedback.split(' ');
+      if (words.length > 15){
+        longReviews.push(array[i]);
+      } 
+  }
+  return longReviews;
+}
+
+console.log(getLongReviews(reviews));
+  
 /* STRETCH 3:  This challenge is not related to the data above! 
 
 Write a function called carMarker 
@@ -161,7 +171,19 @@ The returned object should have the following characteristics:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker(measure) {
+    const car = {
+      odometer: measure, 
+      drive: function(distance){
+        this.odometer+=distance;
+        return this.odometer;
+    }
+  }
+  return car;
 }
+
+const myCar = carMaker(20);
+console.log(myCar);
+console.log(myCar.drive(40));
+console.log(myCar.drive(30));
+console.log(myCar);
