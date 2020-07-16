@@ -1,7 +1,7 @@
 ///////////////Menu Items (MVP)///////////////////
 
 const latte = {name: "Cafe Latte", price: 4, category: "Drinks"};
-//const burger = {name: "Burger", price: 18, category: "Lunch"};
+const burger = {name: "Burger", price: 18, category: "Lunch"};
 const breakfastBurrito = {name: "Breakfast Burrito", price: 16, category:"Breakfast"};
 
 /* Task 1a: write a function to return more menu items with the same format as the items above. */
@@ -28,18 +28,13 @@ and should return a number.
 
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
 
-const burger = {
-  name: "Burger", 
-  price: 18, 
-  category: "Lunch",
-  discount: function(string){
+burger.discount = function(string){
     if (string === "teacher" || string === "student"){
       return this.price*0.75;
   }
     else{
       return this.price*0.9;
     }
-  }
 };
 
 console.log(burger.discount("teacher"));
@@ -66,7 +61,10 @@ console.log(reviews[5].feedback);
 reviews.push({name: "Somayah", rating: 5, feedback: "Great place with unique items that I wouldn't be able to replicate."})
 console.log(reviews)
 
-/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
+/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"*/
+
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays" ;
+console.log(reviews[7]);
 
 /*  Task 6: Write a function to return a review based on the index of the review in the array.
 
@@ -80,10 +78,12 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * For example, if getReviewByIndex is invoked with reviews and the number 0
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
+
 function getReviewByIndex(reviews, index) {
-    /* code here */
-  }
+    return reviews[index].name + " gave the restauraunt a " + reviews[index].rating + " star review and their feedback was: " + reviews[index].feedback;
+}
   
+console.log(getReviewByIndex(reviews, 5));
 
 /* Task 7: Write a function to get information about the most recent review called `getLastReview`
 
